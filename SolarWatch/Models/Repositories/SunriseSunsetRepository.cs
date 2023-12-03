@@ -10,29 +10,27 @@ namespace SolarWatch.Models.Repositories
     {
         private readonly HttpClient _httpClient;
         private readonly ILogger<SunriseSunsetRepository> _logger;
+        private readonly string _openWeatherMapApiKey;
 
-        public SunriseSunsetRepository(HttpClient httpClient, ILogger<SunriseSunsetRepository> logger)
+        public SunriseSunsetRepository(HttpClient httpClient, ILogger<SunriseSunsetRepository> logger, string openWeatherMapApiKey)
         {
             _httpClient = httpClient;
             _logger = logger;
+            _openWeatherMapApiKey = openWeatherMapApiKey;
         }
 
         public async Task<LocationModel> GetGeographicalCoordinatesAsync(string cityName)
         {
-            var _openWeatherMapApiKey = "8921956c7a9183a7c24b85d014c85aab";
-            var openWeatherMapApiUrl = $"http://api.openweathermap.org/geo/1.0/direct?q={cityName}&limit=1&appid={_openWeatherMapApiKey}";
-
             try
             {
-                // Make the API request to OpenWeatherMap to get geographical coordinates
+                var openWeatherMapApiUrl = $"http://api.openweathermap.org/geo/1.0/direct?q={cityName}&limit=1&appid={_openWeatherMapApiKey}";
+
                 var response = await _httpClient.GetStringAsync(openWeatherMapApiUrl);
 
-                // Deserialize the response directly into LocationModel
                 var result = JsonConvert.DeserializeObject<LocationModel[]>(response);
 
                 if (result.Length > 0)
                 {
-                    // Return the first element (assuming the API returns an array)
                     return result[0];
                 }
                 else
@@ -47,13 +45,15 @@ namespace SolarWatch.Models.Repositories
                 throw;
             }
         }
-        
-        public async Task<SunriseSunsetApiResponse> GetSunriseSunsetTimesAsync(double latitude, double longitude, DateTime date)
-        {
-            var sunriseSunsetApiUrl = $"https://api.sunrise-sunset.org/json?lat={latitude}&lng={longitude}&date={date:yyyy-MM-dd}&formatted=0";
 
+        public async Task<SunriseSunsetApiResponse> GetSunriseSunsetTimesAsync(string cityName, DateTime date)
+        {
             try
             {
+                var location = await GetGeographicalCoordinatesAsync(cityName);
+
+                var sunriseSunsetApiUrl = $"https://api.sunrise-sunset.org/json?lat={location.Latitude}&lng={location.Longitude}&date={date:yyyy-MM-dd}&formatted=0";
+
                 var response = await _httpClient.GetStringAsync(sunriseSunsetApiUrl);
                 var result = JsonConvert.DeserializeObject<SunriseSunsetApiResponse>(response);
 

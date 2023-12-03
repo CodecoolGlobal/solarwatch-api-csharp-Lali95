@@ -18,7 +18,7 @@ namespace SolarWatch.Controllers
         }
 
         [HttpGet("times")]
-        public async Task<ActionResult<SunriseSunsetApiResponse>> GetSunriseSunsetTimes([FromQuery] string cityName, [FromQuery] DateTime date)
+        public async Task<ActionResult<SunriseSunsetRepository>> GetSunriseSunsetTimes([FromQuery] string cityName, [FromQuery] DateTime date)
         {
             try
             {
@@ -26,9 +26,9 @@ namespace SolarWatch.Controllers
                 var location = await _sunriseSunsetRepository.GetGeographicalCoordinatesAsync(cityName);
 
                 // Get sunrise and sunset times in local time
-                var sunriseSunsetLocal = await _sunriseSunsetRepository.GetSunriseSunsetTimesAsync(location.Latitude, location.Longitude, date);
+                var sunriseSunsetLocal = await _sunriseSunsetRepository.GetSunriseSunsetTimesAsync(location.Name, location.Date);
 
-                return Ok(sunriseSunsetLocal.Results);
+                return Ok(sunriseSunsetLocal);
             }
             catch (Exception ex)
             {
@@ -38,7 +38,7 @@ namespace SolarWatch.Controllers
         }
 
         [HttpGet("times/utc")]
-        public async Task<ActionResult<SunriseSunsetApiResponse>> GetSunriseSunsetTimesUtc([FromQuery] string cityName, [FromQuery] DateTime date)
+        public async Task<ActionResult<SunriseSunsetRepository>> GetSunriseSunsetTimesUtc([FromQuery] string cityName, [FromQuery] DateTime date)
         {
             try
             {
@@ -46,9 +46,9 @@ namespace SolarWatch.Controllers
                 var location = await _sunriseSunsetRepository.GetGeographicalCoordinatesAsync(cityName);
 
                 // Get sunrise and sunset times in UTC
-                var sunriseSunsetUtc = await _sunriseSunsetRepository.GetSunriseSunsetTimesAsync(location.Latitude, location.Longitude, date.ToUniversalTime());
+                var sunriseSunsetUtc = await _sunriseSunsetRepository.GetSunriseSunsetTimesAsync(location.Name, location.Date);
 
-                return Ok(sunriseSunsetUtc.Results);
+                return Ok(sunriseSunsetUtc);
             }
             catch (Exception ex)
             {
