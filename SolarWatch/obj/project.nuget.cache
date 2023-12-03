@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1qaXmb2QH81FuWmiq1H2b02IYyaUUfjIZQiFCK0Of0KcFnUuJVz5h4ZxPLhpsz+BYt08oqbgw4iAZt3mmFg9zw==",
+  "dgSpecHash": "nRDUT0WOWB0ZvKa4HeVdGjCDoUvAY5V+yohfYLTG6gNRajV3noMt83Sg6xTjJBIi6iHlwTOaPbGI6HiSZ2zt5w==",
   "success": true,
-  "projectFilePath": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj",
+  "projectFilePath": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lui\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.0\\microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512",
     "C:\\Users\\Lui\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
