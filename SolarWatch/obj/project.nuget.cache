@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EmbNCtwI/3dLASteXpFZf46OsoUJ09y99fEVZMU/DY/hGyU73w2MGr1i2lKXkAC4zSsBooVpklrg6zfCLh2gCA==",
+  "dgSpecHash": "Rogs6+pIhsDiPBE+nUF8cvhIohU2AlTowIFLdKf9DB3X55RyvVVuaF8uHoQ6zhBuIrZoGZijQ6M8CD+MiZrfnA==",
   "success": true,
-  "projectFilePath": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj",
+  "projectFilePath": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lui\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Lui\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

@@ -10,64 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04b0e586-33c3-431e-8dd1-e938ade4c5e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Controllers/LocationController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Controllers/SunController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Models/LocationModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Models/Repositories/SunriseSunsetRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Models/Results.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Models/SunsetSunriseApiResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/SolarWatch.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/SolarWatch.http" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/Microsoft.OpenApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/Newtonsoft.Json.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.MvcApplicationPartsAssemblyInfo.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.genruntimeconfig.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.sourcelink.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/apphost.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/ref/SolarWatch.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/refint/SolarWatch.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/staticwebassets/msbuild.build.SolarWatch.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.SolarWatch.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.SolarWatch.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/SolarWatch.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/SolarWatch.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/SolarWatch.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SolarWatch/obj/rider.project.restore.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.solarwatch-api-csharp-Lali95.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.solarwatch-api-csharp-Lali95.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.exe" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/bin/Debug/net8.0/SolarWatch.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/SolarWatch.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/ref/SolarWatch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/ref/SolarWatch.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/refint/SolarWatch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SolarWatch/obj/Debug/net8.0/refint/SolarWatch.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,12 +32,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/SolarWatch/Controllers/LocationController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SolarWatch/Controllers/SunController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SolarWatch/Models/LocationModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SolarWatch/Models/Repositories/SunriseSunsetRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SolarWatch/Models/Results.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SolarWatch/Models/SunsetSunriseApiResponse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Advanced CodeCool/solarwatch-api-csharp-Lali95/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Advanced CodeCool/solarwatch-api-csharp-Lali95/SolarWatch/obj/Debug/net8.0/SolarWatch.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -96,7 +62,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Launch Settings Profile.SolarWatch: http.executor": "Run",
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Docker.SolarWatch/Dockerfile.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -106,12 +74,13 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\Lui\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Lui\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\Lui\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Lui\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
       "C:\\Users\\Lui\\AppData\\Local\\Symbols\\src"
     ]
   }
@@ -183,7 +152,10 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
   </component>
@@ -196,15 +168,39 @@
       <option name="presentableId" value="Default" />
       <updated>1701634832595</updated>
       <workItem from="1701634833729" duration="196000" />
-      <workItem from="1701635194721" duration="7565000" />
+      <workItem from="1701635194721" duration="11083000" />
+      <workItem from="1704128776772" duration="27000" />
+      <workItem from="1704633424152" duration="209000" />
+      <workItem from="1704633635770" duration="241000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add sunrise and sunset calls">
+      <option name="closed" value="true" />
+      <created>1701643335279</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701643335279</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: dockerize">
+      <option name="closed" value="true" />
+      <created>1701646153055</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701646153055</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="feat: add sunrise and sunset calls" />
+    <MESSAGE value="feat: dockerize" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: dockerize" />
   </component>
 </project>

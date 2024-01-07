@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj": {}
+    "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj": {}
   },
   "projects": {
-    "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj": {
+    "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj",
+        "projectUniqueName": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj",
         "projectName": "SolarWatch",
-        "projectPath": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj",
+        "projectPath": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj",
         "packagesPath": "C:\\Users\\Lui\\.nuget\\packages\\",
-        "outputPath": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\obj\\",
+        "outputPath": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lui\\AppData\\Roaming\\NuGet\\NuGet.Config"
