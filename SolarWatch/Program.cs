@@ -1,3 +1,6 @@
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -15,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer("Server=localhost,1433;Database=WeatherApi;User Id=sa;Password=Tt19372846519;TrustServerCertificate=true;"); 
+    options.UseSqlServer("Server=localhost,1433;Database=WeatherApi;User Id=sa;Password=Tt19372846519;TrustServerCertificate=true;");
 });
 
 builder.Services.AddHttpClient<SunriseSunsetRepository>();
@@ -65,6 +68,8 @@ app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SolarWatch API v1"));
 
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Map the controllers and enable endpoint routing
 app.UseEndpoints(endpoints =>
@@ -80,4 +85,48 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.Migrate();
 }
 
+// Example: User login logic (replace this with your actual logic)
+app.MapPost("/login", async context =>
+{
+    var username = context.Request.Form["username"];
+    var password = context.Request.Form["password"];
+
+    // Example: Check credentials (replace this with your actual user authentication logic)
+    if (IsValidUser(username, password))
+    {
+        var token = GenerateJwtToken(username);
+        await context.Response.WriteAsync(token);
+    }
+    else
+    {
+        context.Response.StatusCode = 401;
+        await context.Response.WriteAsync("Invalid credentials");
+    }
+});
+
 app.Run();
+
+// Example: Validate user credentials (replace this with your actual logic)
+bool IsValidUser(string username, string password)
+{
+    // Implement your user authentication logic here
+    // For example, check against a database or external service
+    return username == "example" && password == "password";
+}
+
+// Example: Generate JWT token (replace this with your actual logic)
+string GenerateJwtToken(string username)
+{
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("!SomethingSecret!"));
+    var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+    var token = new JwtSecurityToken(
+        issuer: "apiWithAuthBackend",
+        audience: "apiWithAuthBackend",
+        claims: new[] { new Claim(ClaimTypes.Name, username) },
+        expires: DateTime.Now.AddHours(1), // Token expiration time
+        signingCredentials: credentials
+    );
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
