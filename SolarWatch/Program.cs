@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer("YourConnectionString"); // Replace "YourConnectionString" with your actual connection string
+    options.UseSqlServer("Server=localhost,1433;Database=WeatherApi;User Id=sa;Password=Tt19372846519;TrustServerCertificate=true;"); 
 });
 
 builder.Services.AddHttpClient<SunriseSunsetRepository>();
