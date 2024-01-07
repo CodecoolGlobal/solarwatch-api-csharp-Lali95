@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj": {}
+    "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj": {}
   },
   "projects": {
-    "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj": {
+    "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj",
+        "projectUniqueName": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj",
         "projectName": "SolarWatch",
-        "projectPath": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\SolarWatch.csproj",
+        "projectPath": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\SolarWatch.csproj",
         "packagesPath": "C:\\Users\\Lui\\.nuget\\packages\\",
-        "outputPath": "D:\\Advanced CodeCool\\solarwatch-api-csharp-Lali95\\SolarWatch\\obj\\",
+        "outputPath": "D:\\Advanced CodeCool\\Solarwatch\\SolarWatch\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lui\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -39,6 +39,14 @@
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.0, )"
             },
