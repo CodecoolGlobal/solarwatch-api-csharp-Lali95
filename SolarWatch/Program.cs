@@ -1,132 +1,223 @@
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SolarWatch.Context;
 using SolarWatch.Data;
-using SolarWatch.Models.Repositories;
+using SolarWatch.Model;
+using SolarWatch.Service;
+using SolarWatch.Service.Authentication;
+using SolarWatch.Service.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer("Server=localhost,1433;Database=WeatherApi;User Id=sa;Password=Tt19372846519;TrustServerCertificate=true;");
-});
-
-builder.Services.AddHttpClient<SunriseSunsetRepository>();
-builder.Services.AddScoped<SunriseSunsetRepository>();
-builder.Services
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters()
-        {
-            ClockSkew = TimeSpan.Zero,
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = "apiWithAuthBackend",
-            ValidAudience = "apiWithAuthBackend",
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("!SomethingSecret!")
-            ),
-        };
-    });
-
-var openWeatherMapApiKey = "8921956c7a9183a7c24b85d014c85aab";
-builder.Services.AddSingleton(openWeatherMapApiKey);
-
-builder.Services.AddControllers();
-
-// Configure Swagger
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SolarWatch API", Version = "v1" });
-});
+AddServices();
+ConfigureSwagger();
+AddIdentity();
+AddDbContext();
+AddAuthentication();
+var movieApiKey = builder.Configuration["Movies:ServiceApiKey"];
 
 var app = builder.Build();
+
+AddRoles();
+AddAdmin();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
 
-// Use Swagger and SwaggerUI
-app.UseSwagger();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SolarWatch API v1"));
-
-app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Map the controllers and enable endpoint routing
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
-
-// Apply migrations
-using (var scope = app.Services.CreateScope())
-{
-    var serviceProvider = scope.ServiceProvider;
-    var dbContext = serviceProvider.GetRequiredService<AppDbContext>();
-    dbContext.Database.Migrate();
-}
-
-// Example: User login logic (replace this with your actual logic)
-app.MapPost("/login", async context =>
-{
-    var username = context.Request.Form["username"];
-    var password = context.Request.Form["password"];
-
-    // Example: Check credentials (replace this with your actual user authentication logic)
-    if (IsValidUser(username, password))
-    {
-        var token = GenerateJwtToken(username);
-        await context.Response.WriteAsync(token);
-    }
-    else
-    {
-        context.Response.StatusCode = 401;
-        await context.Response.WriteAsync("Invalid credentials");
-    }
-});
+app.MapControllers();
 
 app.Run();
 
-// Example: Validate user credentials (replace this with your actual logic)
-bool IsValidUser(string username, string password)
+
+
+// void InitializeDb()
+// {
+//     using var db = new WeatherApiContext();
+//    // InitializeCities();
+//     PrintCities();
+//
+//     void InitializeCities()
+//     {
+//         db.Add(new City { Name = "London", Latitude = 51.509865, Longitude = -0.118092 });
+//         db.Add(new City { Name = "Budapest", Latitude = 47.497913, Longitude = 19.040236 });
+//         db.Add(new City { Name = "Paris", Latitude = 48.864716, Longitude = 2.349014 });
+//         db.SaveChanges();
+//     }
+//
+//     void PrintCities()
+//     {
+//         foreach (var city in db.Cities)
+//         {
+//             Console.WriteLine($"{city.Id}, {city.Name}, {city.Latitude}, {city.Longitude}");
+//         }
+//     }
+// }
+
+//InitializeDb();
+
+
+
+
+void AddServices()
 {
-    // Implement your user authentication logic here
-    // For example, check against a database or external service
-    return username == "example" && password == "password";
+    builder.Services.AddHttpClient();
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSingleton<IWeatherDataProvider, OpenWeatherMapApi>();
+    builder.Services.AddSingleton<IJsonProcessor, JsonProcessor>();
+    builder.Services.AddSingleton<IGeocodingService, GeocodingService>();
+    builder.Services.AddSingleton<ISunriseSunsetService,SunriseSunsetService>();
+    builder.Services.AddScoped<ICityRepository, CityRepository>();
+    builder.Services.AddScoped<ISunriseSunsetRepository, SunriseSunsetRepository>();
+    builder.Services.AddDbContext<UsersContext>();
+    builder.Services.AddScoped<IAuthService, AuthService>();
+    builder.Services.AddScoped<ITokenService, TokenService>();
+    builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        });
+    builder.Services.AddControllers(
+        options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 }
 
-// Example: Generate JWT token (replace this with your actual logic)
-string GenerateJwtToken(string username)
+
+void ConfigureSwagger()
 {
-    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("!SomethingSecret!"));
-    var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    builder.Services.AddSwaggerGen(option =>
+    {
+        option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+        option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Description = "Please enter a valid token",
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            BearerFormat = "JWT",
+            Scheme = "Bearer"
+        });
+        option.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type=ReferenceType.SecurityScheme,
+                        Id="Bearer"
+                    }
+                },
+                new string[]{}
+            }
+        });
+    });
+}
 
-    var token = new JwtSecurityToken(
-        issuer: "apiWithAuthBackend",
-        audience: "apiWithAuthBackend",
-        claims: new[] { new Claim(ClaimTypes.Name, username) },
-        expires: DateTime.Now.AddHours(1), // Token expiration time
-        signingCredentials: credentials
-    );
 
-    return new JwtSecurityTokenHandler().WriteToken(token);
+void AddDbContext()
+{
+    
+    builder.Services.AddDbContext<WeatherApiContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Server=localhost,1433;Database=YourDatabaseName;User Id=sa;Password=Tt19372846519;TrustServerCertificate=true;")));
+   
+}
+
+
+void AddAuthentication()
+{
+    builder.Services
+        .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ClockSkew = TimeSpan.Zero,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "apiWithAuthBackend",
+                ValidAudience = "apiWithAuthBackend",
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes("!SomethingSecret!")
+                ),
+            };
+        });
+
+}
+
+
+void AddIdentity()
+{
+    builder.Services
+        .AddIdentityCore<IdentityUser>(options =>
+        {
+            options.SignIn.RequireConfirmedAccount = false;
+            options.User.RequireUniqueEmail = true;
+            options.Password.RequireDigit = false;
+            options.Password.RequiredLength = 6;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequireLowercase = false;
+        })
+        .AddRoles<IdentityRole>() //Enable Identity roles 
+        .AddEntityFrameworkStores<UsersContext>();
+}
+AddRoles();
+void AddRoles()
+{
+    using var scope = app.Services.CreateScope(); // RoleManager is a scoped service, therefore we need a scope instance to access it
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    
+    var tAdmin = CreateAdminRole(roleManager);
+    tAdmin.Wait();
+
+    var tUser = CreateUserRole(roleManager);
+    tUser.Wait();
+}
+
+async Task CreateAdminRole(RoleManager<IdentityRole> roleManager)
+{
+    await roleManager.CreateAsync(new IdentityRole("Admin")); //The role string should better be stored as a constant or a value in appsettings
+}
+
+async Task CreateUserRole(RoleManager<IdentityRole> roleManager)
+{
+    await roleManager.CreateAsync(new IdentityRole("User")); //The role string should better be stored as a constant or a value in appsettings
+}
+void AddAdmin()
+{
+    var tAdmin = CreateAdminIfNotExists();
+    tAdmin.Wait();
+}
+
+async Task CreateAdminIfNotExists()
+{
+    using var scope = app.Services.CreateScope();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var adminInDb = await userManager.FindByEmailAsync("admin@admin.com");
+    if (adminInDb == null)
+    {
+        var admin = new IdentityUser { UserName = "admin", Email = "admin@admin.com" };
+        var adminCreated = await userManager.CreateAsync(admin, "admin123");
+
+        if (adminCreated.Succeeded)
+        {
+            await userManager.AddToRoleAsync(admin, "Admin");
+        }
+    }
 }
