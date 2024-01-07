@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SolarWatch.Data;
 using SolarWatch.Models;
 
 public class WeatherApiContext : DbContext
