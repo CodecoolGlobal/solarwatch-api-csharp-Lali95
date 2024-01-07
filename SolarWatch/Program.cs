@@ -132,7 +132,7 @@ void AddDbContext()
 {
     
     builder.Services.AddDbContext<WeatherApiContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("Server=localhost,1433;Database=YourDatabaseName;User Id=sa;Password=Tt19372846519;TrustServerCertificate=true;")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Server=localhost,1433;Database=WeatherApi;User Id=sa;Password=Tt19372846519;TrustServerCertificate=true;")));
    
 }
 

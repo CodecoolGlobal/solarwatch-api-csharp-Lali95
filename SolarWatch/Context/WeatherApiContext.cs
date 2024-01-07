@@ -16,7 +16,7 @@ public class WeatherApiContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
-            "Server=localhost,1433;Database=WeatherApi;User Id=sa;Password=yourStrong(!)Password;Integrated Security=False;Trusted_Connection=False;Encrypt=False;");
+            "Server=localhost,1433;Database=WeatherApi;User Id=sa;Password=Tt19372846519;Integrated Security=False;Trusted_Connection=False;Encrypt=False;");
     }
     protected override void OnModelCreating(ModelBuilder builder)
     {
