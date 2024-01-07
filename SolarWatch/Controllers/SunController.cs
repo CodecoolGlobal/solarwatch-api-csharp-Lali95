@@ -3,6 +3,7 @@ using SolarWatch.Models;
 using SolarWatch.Models.Repositories;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SolarWatch.Controllers
 {
@@ -17,7 +18,7 @@ namespace SolarWatch.Controllers
             _sunriseSunsetRepository = sunriseSunsetRepository;
         }
 
-        [HttpGet("times")]
+        [HttpGet("times"), Authorize]
         public async Task<ActionResult<SunriseSunsetRepository>> GetSunriseSunsetTimes([FromQuery] string cityName, [FromQuery] DateTime date)
         {
             try
@@ -37,7 +38,7 @@ namespace SolarWatch.Controllers
             }
         }
 
-        [HttpGet("times/utc")]
+        [HttpGet("times/utc"), Authorize]
         public async Task<ActionResult<SunriseSunsetRepository>> GetSunriseSunsetTimesUtc([FromQuery] string cityName, [FromQuery] DateTime date)
         {
             try
