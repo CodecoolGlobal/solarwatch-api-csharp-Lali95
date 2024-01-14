@@ -4,14 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import './index.css'
 
-
-import Layout from './Pages/Layout';
-import ErrorPage from "./Pages/ErrorPage";
-import Products from './Pages/Products';
+import Layout from './Pages/Layout/Layout';
+import ErrorPage from './Pages/ErrorPage';
 import Registration from './Pages/Registration';
 import Login from './Pages/Login';
 import Profile from './Pages/Profile';
-import LandingPage from './Pages/LandingPage';
 
 
 const router = createBrowserRouter([
@@ -20,32 +17,19 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-       {
-        path: "/",
-        element: <LandingPage />,
-      },
-   
-     /*  {
-        path: "/:movieId/products",
-        element: <ProductsByMovie />,
+      {
+        path: "/registration", 
+        element: <Registration />,
       },
       {
-        path: "/:movieId/products/:filter",
-        element: <ProductsByCategories />,
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: "/:itemId",
-        element: <Item />,
+        path: "/profile",
+        element: <Profile />,
       },
-      {
-        path: "/:userId/cart",
-        element: <Cart />,
-      },
-      {
-        path: "/signin",
-        element: <SignIn />,
-      },
-      */
+    
     ],
   },
 ]);
